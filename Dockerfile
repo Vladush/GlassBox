@@ -31,4 +31,4 @@ COPY --from=builder /app/tsconfig.base.json .
 EXPOSE 3001
 
 # Start API (which serves Web)
-CMD ["npm", "start", "--workspace=@glassbox/api"]
+CMD sh -c "npm run migrate --workspace=@glassbox/db && npm run seed --workspace=@glassbox/db && npm start --workspace=@glassbox/api"

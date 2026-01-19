@@ -50,14 +50,13 @@ Designed for type safety and rapid iteration:
 
 ### Docker
 
-Spin up the full stack:
+The easiest way to run the full stack (App + Postgres) is via Docker Compose:
 
 ```bash
-docker build -t glassbox-demo .
-docker run -p 3001:3001 glassbox-demo
+docker-compose up --build
 ```
 
-**Access:** `http://localhost:3001` (Docker serves both frontend and API on this port)
+**Access:** `http://localhost:3001`
 
 ## 🧪 Verification Flows
 
