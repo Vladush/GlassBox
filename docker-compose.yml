@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: glassbox_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: glassbox
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U user -d glassbox" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: glassbox_app
+    ports:
+      - "3001:3001"
+    environment:
+      # Use the interactive hostname "postgres" (service name)
+      DATABASE_URL: postgres://user:password@postgres:5432/glassbox
+      PORT: 3001
+      NODE_ENV: production
+      # Secret for Better Auth (required for production)
+      BETTER_AUTH_SECRET: supersecret1234567890
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: on-failure
+volumes:
+  postgres_data:

@@ -1,0 +1,30 @@
+{
+    "name": "@glassbox/db",
+    "version": "0.1.0",
+    "private": true,
+    "main": "./src/index.ts",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": "./src/index.ts",
+        "./schema": "./src/schema.ts"
+    },
+    "scripts": {
+        "build": "tsc",
+        "generate": "drizzle-kit generate",
+        "migrate": "drizzle-kit migrate",
+        "seed": "tsx src/seed.ts"
+    },
+    "dependencies": {
+        "@better-auth/sso": "^1.0.0",
+        "better-auth": "^1.4.15",
+        "dotenv": "^17.2.3",
+        "drizzle-orm": "^0.45.1",
+        "nanoid": "^5.1.6",
+        "pg": "^8.17.1"
+    },
+    "devDependencies": {
+        "@types/pg": "^8.16.0",
+        "drizzle-kit": "^0.31.8",
+        "typescript": "5.7.3"
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "glassbox-demo",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "services/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "npm run build --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.9",
+    "turbo": "^2.7.5",
+    "typescript": "5.7.3"
+  },
+  "overrides": {
+    "esbuild": "^0.25.0",
+    "cookie": "^1.1.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}
